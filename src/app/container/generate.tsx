@@ -49,7 +49,7 @@ export const Generate = () => {
   const handleDownloadQrCode = async () => {
     if (qrCodeRef.current !== null) {
 
-      const qrCodeImage = await toPng(qrCodeRef.current, {width: 1500, style: {margin: "0 auto", display: "flex", alignItems: "center", "justifyContent": "center"}})
+      const qrCodeImage = await toPng(qrCodeRef.current, {width: 2500, style: {margin: "0 auto", display: "flex", alignItems: "center", "justifyContent": "center"}})
 
       saveAs(qrCodeImage, "qrcode.png")
 
