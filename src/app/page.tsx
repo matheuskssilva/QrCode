@@ -16,7 +16,7 @@ export default function Home() {
   
 
   return (
-    <div className="flex items-center  flex-col gap-28 bg-[#171717] min-h-screen w-full overflow">
+    <div className="flex items-center  flex-col gap-28 bg-[#171717] min-h-screen w-full overflow-x-hidden">
       <Header />
       <Generate />
        
