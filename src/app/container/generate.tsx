@@ -1,22 +1,27 @@
-import { useRef, useState } from "react";
-import { Button } from "@/components/ui/button";
-import { saveAs } from "file-saver";
-import QRCode from "react-qr-code";
-import { toPng } from "html-to-image";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+"use client"
+
+// Libs
+import { useRef, useState } from "react"
+import { saveAs } from "file-saver"
+import QRCode from "react-qr-code"
+import { toPng } from "html-to-image"
+
+// Lib ShadCN
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 
 
 
 
 export const Generate = () => {
-  const [qrValues, setQrValues] = useState<{ url: string; name: string }[]>([]);
-  const [inputText, setInputText] = useState("");
-  const [name, setName] = useState("");
+  const [qrValues, setQrValues] = useState<{ url: string; name: string }[]>([])
+  const [inputText, setInputText] = useState("")
+  const [name, setName] = useState("")
 
   const [inputError, setInputError] = useState(false)
 
-  const qrCodeRef = useRef<HTMLDivElement>(null);
+  const qrCodeRef = useRef<HTMLDivElement>(null)
 
   const handleClickQrCode = async () => {
     if (inputText.trim() !== "") {
@@ -32,21 +37,21 @@ export const Generate = () => {
 
   const isValidateUrl = (url: string) => {
     const urlPattern = /^https:\/\//
-    return urlPattern.test(url);
-  };
+    return urlPattern.test(url)
+  }
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setInputText(value);
-    setInputError(!isValidateUrl(value)); // Definir o estado de erro com base na validação da URL
-  };
+    const { value } = event.target
+    setInputText(value)
+    setInputError(!isValidateUrl(value)) 
+  }
 
   const handleDownloadQrCode = async () => {
     if (qrCodeRef.current !== null) {
 
       const qrCodeImage = await toPng(qrCodeRef.current, {width: 1500, style: {margin: "0 auto", display: "flex", alignItems: "center", "justifyContent": "center"}})
 
-      saveAs(qrCodeImage, "qrcode.png");
+      saveAs(qrCodeImage, "qrcode.png")
 
     }
   };
