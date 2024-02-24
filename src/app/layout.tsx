@@ -17,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={roboto.className}>{children}</body>
+      <link rel="shortcut icon" href="qr-code-icon-vector.jpg"  />
     </html>
   );
 }
